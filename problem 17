@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class Exp17_SinglyLinkedList {
+    static class Node {
+        int data;
+        Node next;
+        Node(int d) { data = d; next = null; }
+    }
+    
+    Node head;
+
+    // Insertions
+    void insertStart(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+    void insertEnd(int data) {
+        Node newNode = new Node(data);
+        if(head == null) { head = newNode; return; }
+        Node temp = head;
+        while(temp.next != null) temp = temp.next;
+        temp.next = newNode;
+    }
+    
+    // Deletions
+    void deleteStart() {
+        if(head != null) head = head.next;
+    }
+    void deleteEnd() {
+        if(head == null || head.next == null) { head = null; return; }
+        Node temp = head;
+        while(temp.next.next != null) temp = temp.next;
+        temp.next = null;
+    }
+
+    void display() {
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        Exp17_SinglyLinkedList list = new Exp17_SinglyLinkedList();
+        Scanner sc = new Scanner(System.in);
+        while(true) {
+            System.out.println("1.Insert Start 2.Insert End 3.Delete Start 4.Delete End 5.Display 6.Exit");
+            int choice = sc.nextInt();
+            switch(choice) {
+                case 1: list.insertStart(sc.nextInt()); break;
+                case 2: list.insertEnd(sc.nextInt()); break;
+                case 3: list.deleteStart(); break;
+                case 4: list.deleteEnd(); break;
+                case 5: list.display(); break;
+                case 6: return;
+            }
+        }
+    }
+}

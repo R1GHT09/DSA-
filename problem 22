@@ -1,0 +1,39 @@
+public class Exp22_TreeTraversal {
+    static class Node {
+        int key;
+        Node left, right;
+        Node(int item) { key = item; }
+    }
+
+    void postorder(Node node) {
+        if (node == null) return;
+        postorder(node.left);
+        postorder(node.right);
+        System.out.print(node.key + " ");
+    }
+
+    void inorder(Node node) {
+        if (node == null) return;
+        inorder(node.left);
+        System.out.print(node.key + " ");
+        inorder(node.right);
+    }
+
+    void preorder(Node node) {
+        if (node == null) return;
+        System.out.print(node.key + " ");
+        preorder(node.left);
+        preorder(node.right);
+    }
+
+    public static void main(String[] args) {
+        Exp22_TreeTraversal tree = new Exp22_TreeTraversal();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        
+        System.out.print("Preorder: "); tree.preorder(root);
+        System.out.print("\nInorder: "); tree.inorder(root);
+        System.out.print("\nPostorder: "); tree.postorder(root);
+    }
+}

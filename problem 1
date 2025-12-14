@@ -1,0 +1,38 @@
+import java.util.Arrays;
+
+public class Exp1_ArrayOperations {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        System.out.println("Original: " + Arrays.toString(arr));
+
+        // Insert 25 at index 2
+        arr = insertElement(arr, 25, 2);
+        System.out.println("After Insertion: " + Arrays.toString(arr));
+
+        // Delete element at index 3
+        arr = deleteElement(arr, 3);
+        System.out.println("After Deletion: " + Arrays.toString(arr));
+    }
+
+    public static int[] insertElement(int[] original, int element, int index) {
+        int[] newArr = new int[original.length + 1];
+        for (int i = 0, j = 0; i < newArr.length; i++) {
+            if (i == index) {
+                newArr[i] = element;
+            } else {
+                newArr[i] = original[j++];
+            }
+        }
+        return newArr;
+    }
+
+    public static int[] deleteElement(int[] original, int index) {
+        int[] newArr = new int[original.length - 1];
+        for (int i = 0, j = 0; i < original.length; i++) {
+            if (i != index) {
+                newArr[j++] = original[i];
+            }
+        }
+        return newArr;
+    }
+}

@@ -1,0 +1,36 @@
+public class Exp18_DoublyLinkedList {
+    class Node {
+        int data;
+        Node prev, next;
+        Node(int d) { data = d; }
+    }
+    
+    Node head;
+
+    void insert(int data) {
+        Node newNode = new Node(data);
+        if(head == null) { head = newNode; return; }
+        Node temp = head;
+        while(temp.next != null) temp = temp.next;
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    void display() {
+        Node temp = head;
+        System.out.print("Forward: ");
+        while(temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Exp18_DoublyLinkedList dll = new Exp18_DoublyLinkedList();
+        dll.insert(10);
+        dll.insert(20);
+        dll.insert(30);
+        dll.display();
+    }
+}

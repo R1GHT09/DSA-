@@ -1,0 +1,18 @@
+public class Exp5_Factorial {
+    public static void main(String[] args) {
+        int n = 5;
+        System.out.println("Factorial Iterative: " + factIterative(n));
+        System.out.println("Factorial Recursive: " + factRecursive(n));
+    }
+
+    static int factIterative(int n) {
+        int res = 1;
+        for (int i = 1; i <= n; i++) res *= i;
+        return res;
+    }
+
+    static int factRecursive(int n) {
+        if (n == 0) return 1;
+        return n * factRecursive(n - 1);
+    }
+}

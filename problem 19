@@ -1,0 +1,40 @@
+public class Exp19_CircularLinkedList {
+    class Node {
+        int data;
+        Node next;
+        Node(int d) { data = d; }
+    }
+    Node head = null;
+    Node tail = null;
+
+    void insert(int data) {
+        Node newNode = new Node(data);
+        if(head == null) {
+            head = newNode;
+            tail = newNode;
+            tail.next = head;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+            tail.next = head;
+        }
+    }
+
+    void display() {
+        if(head == null) return;
+        Node temp = head;
+        do {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        } while(temp != head);
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Exp19_CircularLinkedList cll = new Exp19_CircularLinkedList();
+        cll.insert(1);
+        cll.insert(2);
+        cll.insert(3);
+        cll.display();
+    }
+}

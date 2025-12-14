@@ -1,0 +1,26 @@
+public class Exp21_CircularQueue {
+    int size = 5, front = -1, rear = -1;
+    int[] queue = new int[size];
+
+    void enqueue(int x) {
+        if((rear + 1) % size == front) { System.out.println("Full"); return; }
+        if(front == -1) front = 0;
+        rear = (rear + 1) % size;
+        queue[rear] = x;
+    }
+
+    int dequeue() {
+        if(front == -1) { System.out.println("Empty"); return -1; }
+        int data = queue[front];
+        if(front == rear) front = rear = -1;
+        else front = (front + 1) % size;
+        return data;
+    }
+
+    public static void main(String[] args) {
+        Exp21_CircularQueue q = new Exp21_CircularQueue();
+        q.enqueue(10);
+        q.enqueue(20);
+        System.out.println("Dequeued: " + q.dequeue());
+    }
+}
